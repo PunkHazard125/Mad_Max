@@ -11,8 +11,8 @@ import java.util.ArrayList;
 
 public class FileManager {
 
-    private static final String OUTPOST_FILE = "outposts.json";
-    private static final String ROUTE_FILE = "routes.json";
+    private static final String OUTPOST_FILE = "/json/outposts.json";
+    private static final String ROUTE_FILE = "/json/routes.json";
     private static final Gson gson = new Gson();
 
     private static <T> void saveToFile(String fileName, ArrayList<T> data) {

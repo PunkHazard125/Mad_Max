@@ -1,0 +1,18 @@
+.button {
+    -fx-background-color: #b20000;
+    -fx-font-family: "Bungee";
+    -fx-font-size: 18;
+    -fx-text-fill: #d5d4d0;
+    -fx-background-radius: 5px;
+    -fx-padding: 5 10;
+    -fx-cursor: hand;
+    -fx-effect: none;
+}
+
+.button:hover {
+    -fx-background-color: #d5d4d0;
+    -fx-text-fill: #b20000;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 4, 4);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}

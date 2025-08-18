@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="378.0" prefWidth="785.0" style="-fx-background-color: #db8828;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.madmax.Controllers.MainMenuController">
+<AnchorPane prefHeight="378.0" prefWidth="785.0" style="-fx-background-color: #db8828;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.madmax.Controllers.JourneyMenuController">
     <children>
         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="396.0" layoutY="25.0" prefHeight="31.0" prefWidth="370.0" style="-fx-font-family: Bungee; -fx-font-size: 22;" text="Welcome, Max Rockatansky!" textAlignment="CENTER" textFill="#0a0a0a" />
         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="436.0" layoutY="63.0" lineSpacing="3.0" prefHeight="170.0" prefWidth="290.0" style="-fx-font-family: Cambria; -fx-font-size: 17;" text="IN A WORLD OF DUST AND RUIN,&#10;SURVIVAL RUNS ON WHEELS.  &#10;YOUR MISSION: PLAN THE SAFEST,&#10;MOST FUEL-EFFICIENT ROUTE  &#10;FOR YOUR CONVOY TO GASTOWN.&#10;CHOOSE WISELY… THE WASTELAND&#10;DOESN’T FORGIVE MISTAKES." textAlignment="CENTER" textFill="#d5d4d0">
@@ -13,20 +13,20 @@
                 <Font name="Cambria Bold" size="20.0" />
             </font>
         </Label>
-        <Button fx:id="startButton" layoutX="492.0" layoutY="251.0" mnemonicParsing="false" onAction="#handleStart" prefHeight="42.0" prefWidth="185.0" stylesheets="@stylesheets/start.css" text="Start Journey" textAlignment="CENTER" textFill="#e3dbca">
+        <Button fx:id="startButton" layoutX="492.0" layoutY="251.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="185.0" stylesheets="@stylesheets/start.css" text="Start Journey" textAlignment="CENTER" textFill="#e3dbca">
             <font>
                 <Font name="Bungee" size="18.0" />
             </font>
         </Button>
-        <Button fx:id="exitButton" layoutX="492.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="42.0" prefWidth="185.0" stylesheets="@stylesheets/exit.css" text="Exit" textAlignment="CENTER" textFill="#0a0a0a">
+        <Button fx:id="exitButton" layoutX="492.0" layoutY="304.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="185.0" stylesheets="@stylesheets/exit.css" text="Exit" textAlignment="CENTER" textFill="#0a0a0a">
             <font>
                 <Font name="Cambria Bold" size="18.0" />
             </font>
         </Button>
-      <ImageView fx:id="mad_max_bg" fitHeight="378.0" fitWidth="378.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../images/main_bg.png" />
-         </image>
-      </ImageView>
+        <ImageView fitHeight="378.0" fitWidth="378.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../images/main_bg.png" />
+            </image>
+        </ImageView>
     </children>
 </AnchorPane>

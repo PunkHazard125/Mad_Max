@@ -28,12 +28,15 @@ public class App extends Application {
             Parent root = loader.load();
 
             MainMenuController controller = loader.getController();
+            controller.setDatabase(database);
             controller.setPrimaryStage(primaryStage);
-            Image icon  = new Image(getClass().getResourceAsStream("/images/icon.jpg"));
+            Image icon  = new Image(getClass().getResourceAsStream("/images/icon.png"));
             primaryStage.getIcons().add(icon);
             primaryStage.setTitle("Main Menu");
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
+            primaryStage.setResizable(false);
+
         }
         catch (Exception ex)
         {

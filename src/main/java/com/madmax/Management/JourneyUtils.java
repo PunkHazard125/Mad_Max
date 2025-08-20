@@ -3,6 +3,7 @@ package com.madmax.Management;
 import com.madmax.Models.Outpost;
 import com.madmax.Models.Route;
 import com.madmax.Models.Step;
+import com.madmax.Models.Vehicle;
 
 import java.util.*;
 
@@ -68,6 +69,36 @@ public class JourneyUtils {
             steps.add(new Step(o, cost));
 
         }
+
+    }
+
+    public static int detour(int currentLoc, ArrayList<ArrayList<Route>> adjList, ArrayList<Outpost> outposts,
+                             Vehicle warRig) {
+
+        int fuel = warRig.getFuel();
+        int newLoc = -1;
+        int fuelCost = Integer.MAX_VALUE;
+
+        for (Route r : adjList.get(currentLoc)) {
+
+            if (r.get_fuel_cost() <= fuelCost && r.get_fuel_cost() <= fuel) {
+
+                newLoc = r.get_dest();
+                fuelCost = r.get_fuel_cost();
+
+            }
+
+        }
+
+        if (newLoc != -1) {
+
+            warRig.consumeFuel(fuelCost);
+            warRig.setLocationId(newLoc);
+            warRig.refuel(outposts.get(newLoc).getFuelSupply());
+
+        }
+
+        return newLoc;
 
     }
 

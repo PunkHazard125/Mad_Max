@@ -61,7 +61,7 @@ public class Vehicle {
         fuel = Math.min(fuel + amount, fuelCapacity);
     }
 
-    public void ConsumeFuel(int amount) {
+    public void consumeFuel(int amount) {
         fuel = Math.max(fuel - amount, 0);
     }
 

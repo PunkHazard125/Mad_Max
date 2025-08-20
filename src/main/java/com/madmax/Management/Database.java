@@ -20,11 +20,11 @@ public class Database {
 
         outposts.add(0, new Outpost());
 
-        war_rig = new Vehicle(50, 40);
+        war_rig = new Vehicle(60, 120);
 
         if (!outposts.isEmpty()) {
 
-            war_rig.refuel(outposts.getFirst().getFuelSupply());
+            war_rig.refuel(outposts.get(1).getFuelSupply() + 10);
             outposts.getFirst().getItems().clear();
 
         }

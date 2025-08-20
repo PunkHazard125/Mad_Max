@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -12,6 +13,9 @@ public class MainMenuController {
 
     private Database database;
     private Stage primaryStage;
+
+    @FXML
+    private Button startButton;
 
     public void setDatabase(Database database) {
         this.database = database;
@@ -30,18 +34,23 @@ public class MainMenuController {
 
         try
         {
+            Stage currStage = (Stage) startButton.getScene().getWindow();
+            currStage.close();
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/madmax/JourneyMenu.fxml"));
             Parent root = loader.load();
 
+            Stage newStage = new Stage();
+
             JourneyMenuController controller = loader.getController();
             controller.setDatabase(database);
-            controller.setPrimaryStage(primaryStage);
+            controller.setPrimaryStage(newStage);
             Image icon  = new Image(getClass().getResourceAsStream("/images/icon.png"));
-            primaryStage.getIcons().add(icon);
-            primaryStage.setTitle("Journey Menu");
-            primaryStage.setScene(new Scene(root));
-            primaryStage.show();
-            primaryStage.setResizable(false);
+            newStage.getIcons().add(icon);
+            newStage.setTitle("Journey Menu");
+            newStage.setScene(new Scene(root));
+            newStage.show();
+            newStage.setResizable(false);
 
         }
         catch (Exception ex)

@@ -18,6 +18,8 @@ public class Database {
         outposts = FileManager.loadOutposts();
         routes = FileManager.loadRoutes();
 
+        outposts.add(0, new Outpost());
+
         war_rig = new Vehicle(50, 40);
 
         if (!outposts.isEmpty()) {
@@ -37,7 +39,7 @@ public class Database {
 
         for (Route r : routes) {
 
-            int src = r.get_src() - 1;
+            int src = r.get_src();
             adjList.get(src).add(r);
 
         }

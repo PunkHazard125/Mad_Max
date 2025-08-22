@@ -54,7 +54,7 @@ public class JourneyMenuController {
         int dest = 50;
         database.getWarRig().setLocationId(src);
 
-        JourneyUtils.dijkstra(src, dest, database.getAdjList(), database.getOutposts(), route, steps);
+        JourneyUtils.dijkstra(src, dest, database.getAdjList(), database.getOutposts(), route, steps, database.getWarRig());
 
         currentPath.getItems().setAll(steps);
 
@@ -72,7 +72,9 @@ public class JourneyMenuController {
         route = new ArrayList<>();
         steps = new ArrayList<>();
 
-        JourneyUtils.dijkstra(nextLoc, 50, database.getAdjList(), database.getOutposts(), route, steps);
+        JourneyUtils.dijkstra(nextLoc, 50, database.getAdjList(), database.getOutposts(), route, steps, database.getWarRig());
+        JourneyUtils.updateRisk(steps);
+
         currentPath.getItems().setAll(steps);
 
     }
@@ -117,7 +119,9 @@ public class JourneyMenuController {
 
             route = new ArrayList<>();
             steps = new ArrayList<>();
-            JourneyUtils.dijkstra(newLoc, 50, database.getAdjList(), database.getOutposts(), route, steps);
+            JourneyUtils.dijkstra(newLoc, 50, database.getAdjList(), database.getOutposts(), route, steps, database.getWarRig());
+            JourneyUtils.updateRisk(steps);
+
             currentPath.getItems().setAll(steps);
 
             loadingPane.setVisible(false);
@@ -156,9 +160,18 @@ public class JourneyMenuController {
         int fuelCost = nextStep.getFuelCost();
         int currFuel = database.getWarRig().getFuel();
 
+        int currRisk = nextStep.getOutpost().getRiskLevel();
+
         if (fuelCost > currFuel) {
 
             handleDetour("Insufficient fuel.");
+            return;
+
+        }
+
+        if (currRisk > 7) {
+
+            handleDetour("High chances of ambush or blockade.");
             return;
 
         }

@@ -16,6 +16,23 @@ public class Outpost {
 
     }
 
+    public Outpost(Outpost outpost) {
+
+        this.id = outpost.getId();
+        this.name = outpost.getName();
+        this.fuelSupply = outpost.getFuelSupply();
+        this.riskLevel = outpost.getRiskLevel();
+
+        items = new ArrayList<>();
+
+        for (Item item : outpost.getItems()) {
+
+            this.items.add(new Item(item));
+
+        }
+
+    }
+
     public Outpost(int num, String str, int f, int r) {
 
         id = num;

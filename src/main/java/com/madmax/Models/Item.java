@@ -18,6 +18,15 @@ public class Item {
 
     }
 
+    public Item(Item o) {
+
+        id = o.getId();
+        name = o.getName();
+        weight = o.getWeight();
+        value = o.getValue();
+
+    }
+
     public int getId() {
         return id;
     }

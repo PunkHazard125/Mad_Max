@@ -4,10 +4,14 @@ public class Step {
 
     private Outpost outpost;
     private int fuelCost;
+    private double successRate;
 
-    public Step(Outpost outpost, int fuelCost) {
+    public Step(Outpost outpost, int fuelCost, double prob) {
+
         this.outpost = outpost;
         this.fuelCost = fuelCost;
+        this.successRate = prob;
+
     }
 
     public Outpost getOutpost() {
@@ -18,9 +22,19 @@ public class Step {
         return fuelCost;
     }
 
+    public double getSuccessRate() {
+        return successRate;
+    }
+
+    public void setSuccessRate(double successRate) {
+        this.successRate = successRate;
+    }
+
     @Override
     public String toString() {
-        return outpost.getName() + " | Supply: " + outpost.getFuelSupply() + " | Cost: " + fuelCost;
+        return outpost.getName()
+                + " | Cost: " + fuelCost
+                + " | Rate: " + String.format("%.2f", successRate * 100) + "% ";
     }
 
 }

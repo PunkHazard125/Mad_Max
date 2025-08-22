@@ -20,6 +20,15 @@ public class Vehicle {
 
     }
 
+    public Vehicle(Vehicle o) {
+
+        fuel = o.getFuel();
+        cargo = new ArrayList<>();
+        fuelCapacity = o.getFuelCapacity();
+        cargoCapacity = o.getCargoCapacity();
+
+    }
+
     public int getFuel() {
         return fuel;
     }

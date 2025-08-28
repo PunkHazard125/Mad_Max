@@ -1,5 +1,7 @@
 package com.madmax.Models;
 
+import com.madmax.Simulation.Event;
+
 import java.util.ArrayList;
 
 public class Outpost {
@@ -7,12 +9,32 @@ public class Outpost {
     private int id;
     private String name;
     private int fuelSupply;
-    private int riskLevel;
+    private ArrayList<Event> events;
     private ArrayList<Item> items;
 
     public Outpost() {
 
+        events = new ArrayList<>();
         items = new ArrayList<>();
+
+    }
+
+    public Outpost(int id, String name, int fuelSupply, ArrayList<Event> events, ArrayList<Item> items) {
+
+        this.id = id;
+        this.name = name;
+        this.fuelSupply = fuelSupply;
+
+        this.events = new ArrayList<>();
+        this.items = new ArrayList<>();
+
+        this.events.addAll(events);
+
+        for (Item item : items) {
+
+            this.items.add(new Item(item));
+
+        }
 
     }
 
@@ -21,37 +43,17 @@ public class Outpost {
         this.id = outpost.getId();
         this.name = outpost.getName();
         this.fuelSupply = outpost.getFuelSupply();
-        this.riskLevel = outpost.getRiskLevel();
 
-        items = new ArrayList<>();
+        this.events = new ArrayList<>();
+        this.items = new ArrayList<>();
+
+        this.events.addAll(outpost.getEvents());
 
         for (Item item : outpost.getItems()) {
 
             this.items.add(new Item(item));
 
         }
-
-    }
-
-    public Outpost(int num, String str, int f, int r) {
-
-        id = num;
-        name = str;
-        fuelSupply = f;
-        riskLevel = r;
-
-        items = new ArrayList<>();
-
-    }
-
-    public Outpost(int num, String str, int f, int r, ArrayList<Item> list) {
-
-        id = num;
-        name = str;
-        fuelSupply = f;
-        riskLevel = r;
-
-        items = new ArrayList<>(list);
 
     }
 
@@ -67,8 +69,8 @@ public class Outpost {
         return fuelSupply;
     }
 
-    public int getRiskLevel() {
-        return riskLevel;
+    public ArrayList<Event> getEvents() {
+        return events;
     }
 
     public ArrayList<Item> getItems() {
@@ -87,8 +89,8 @@ public class Outpost {
         this.fuelSupply = fuelSupply;
     }
 
-    public void setRiskLevel(int riskLevel) {
-        this.riskLevel = riskLevel;
+    public void setEvents(ArrayList<Event> events) {
+        this.events = events;
     }
 
     public void setItems(ArrayList<Item> items) {

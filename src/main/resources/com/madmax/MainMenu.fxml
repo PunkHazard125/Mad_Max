@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -8,32 +7,17 @@
 
 <AnchorPane prefHeight="378.0" prefWidth="785.0" style="-fx-background-color: #db8828;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.madmax.Controllers.MainMenuController">
     <children>
-      <ImageView fitHeight="378.0" fitWidth="784.0" layoutX="1.0" opacity="0.35" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="378.0" fitWidth="784.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/main_bg_img.png" />
+            <Image url="@../../images/main_bg_img_2.png" />
          </image>
       </ImageView>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="396.0" layoutY="20.0" prefHeight="31.0" prefWidth="370.0" style="-fx-font-family: Bungee; -fx-font-size: 22;" text="Welcome, Max Rockatansky!" textAlignment="CENTER" textFill="#0a0a0a" />
-      <Group layoutX="436.0" layoutY="62.0">
-         <children>
-              <Label alignment="CENTER" contentDisplay="CENTER" lineSpacing="3.0" prefHeight="178.0" prefWidth="297.0" style="-fx-font-family: Cambria; -fx-font-size: 17; -fx-background-color: #0a0a0a; -fx-opacity: 0.06; -fx-background-radius: 10;" text="IN A WORLD OF DUST AND RUIN,&#10;SURVIVAL RUNS ON WHEELS.  &#10;YOUR MISSION: PLAN THE SAFEST,&#10;MOST FUEL-EFFICIENT ROUTE  &#10;FOR YOUR CONVOY TO GASTOWN.&#10;CHOOSE WISELY… THE WASTELAND&#10;DOESN’T FORGIVE MISTAKES." textAlignment="CENTER" textFill="#0a0a0a">
-                  <font>
-                      <Font name="Cambria Bold" size="20.0" />
-                  </font>
-              </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" lineSpacing="3.0" prefHeight="178.0" prefWidth="297.0" style="-fx-font-family: Cambria; -fx-font-size: 17; -fx-border-color: #0a0a0a; -fx-border-width: 3; -fx-border-radius: 10;" text="IN A WORLD OF DUST AND RUIN,&#10;SURVIVAL RUNS ON WHEELS.  &#10;YOUR MISSION: PLAN THE SAFEST,&#10;MOST FUEL-EFFICIENT ROUTE  &#10;FOR YOUR CONVOY TO GASTOWN.&#10;CHOOSE WISELY… THE WASTELAND&#10;DOESN’T FORGIVE MISTAKES." textAlignment="CENTER" textFill="#0a0a0a">
-               <font>
-                  <Font name="Cambria Bold" size="20.0" />
-               </font>
-            </Label>
-         </children>
-      </Group>
-        <Button fx:id="startButton" layoutX="492.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleStart" prefHeight="42.0" prefWidth="185.0" stylesheets="@stylesheets/start.css" text="Start Journey" textAlignment="CENTER" textFill="#e3dbca">
+        <Button fx:id="startButton" layoutX="402.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleStart" prefHeight="42.0" prefWidth="178.0" stylesheets="@stylesheets/start.css" text="Start Journey" textAlignment="CENTER" textFill="#e3dbca">
             <font>
                 <Font name="Bungee" size="18.0" />
             </font>
         </Button>
-        <Button fx:id="exitButton" layoutX="492.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="42.0" prefWidth="185.0" stylesheets="@stylesheets/exit.css" text="Exit" textAlignment="CENTER" textFill="#0a0a0a">
+        <Button fx:id="exitButton" layoutX="598.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="42.0" prefWidth="163.0" stylesheets="@stylesheets/exit.css" text="Exit" textAlignment="CENTER" textFill="#0a0a0a">
             <font>
                 <Font name="Cambria Bold" size="18.0" />
             </font>
@@ -41,6 +25,16 @@
       <ImageView fx:id="mad_max_bg" fitHeight="378.0" fitWidth="378.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/main_bg.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="215.0" fitWidth="361.0" layoutX="400.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/main_text.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="215.0" fitWidth="361.0" layoutX="401.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/welcome_text.png" />
          </image>
       </ImageView>
     </children>

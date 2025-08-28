@@ -9,6 +9,7 @@ public class Vehicle {
     private final int fuelCapacity;
     private final int cargoCapacity;
     private int locationId;
+    private int credits;
 
     public Vehicle(int f, int c) {
 
@@ -16,6 +17,7 @@ public class Vehicle {
         cargoCapacity = c;
         fuel = 0;
         locationId = 1;
+        credits = 0;
         cargo = new ArrayList<>();
 
     }
@@ -26,6 +28,7 @@ public class Vehicle {
         cargo = new ArrayList<>();
         fuelCapacity = o.getFuelCapacity();
         cargoCapacity = o.getCargoCapacity();
+        credits = o.getCredits();
 
     }
 
@@ -43,6 +46,10 @@ public class Vehicle {
 
     public int getLocationId() {
         return locationId;
+    }
+
+    public int getCredits() {
+        return credits;
     }
 
     public ArrayList<Item> getCargo() {
@@ -91,6 +98,10 @@ public class Vehicle {
 
         cargo.remove(item);
 
+    }
+
+    public void addCredits(int amount) {
+        credits += amount;
     }
 
 }

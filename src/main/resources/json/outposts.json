@@ -3,7 +3,13 @@
     "id": 1,
     "name": "Citadel",
     "fuelSupply": 40,
-    "riskLevel": 6,
+    "events": [
+      { "type": "none", "probability": 1.00 },
+      { "type": "fuel_loss", "probability": 0.00 },
+      { "type": "fuel_bonus", "probability": 0.00 },
+      { "type": "loot", "probability": 0.00 },
+      { "type": "ambush", "probability": 0.00 }
+    ],
     "items": [
       { "id": 101, "name": "Scrap Electronics", "weight": 6, "value": 45 },
       { "id": 102, "name": "Canned Rations", "weight": 3, "value": 20 },
@@ -14,7 +20,13 @@
     "id": 2,
     "name": "Iron Ford",
     "fuelSupply": 10,
-    "riskLevel": 5,
+    "events": [
+      { "type": "none", "probability": 0.63 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.07 },
+      { "type": "loot", "probability": 0.08 },
+      { "type": "ambush", "probability": 0.16 }
+    ],
     "items": [
       { "id": 201, "name": "Tool Kit", "weight": 7, "value": 50 },
       { "id": 202, "name": "Bottle of Clean Water", "weight": 2, "value": 12 }
@@ -24,7 +36,13 @@
     "id": 3,
     "name": "Outpost Delta",
     "fuelSupply": 0,
-    "riskLevel": 7,
+    "events": [
+      { "type": "none", "probability": 0.56 },
+      { "type": "fuel_loss", "probability": 0.08 },
+      { "type": "fuel_bonus", "probability": 0.04 },
+      { "type": "loot", "probability": 0.08 },
+      { "type": "ambush", "probability": 0.24 }
+    ],
     "items": [
       { "id": 301, "name": "Med Kit", "weight": 4, "value": 40 },
       { "id": 302, "name": "Fuel Can (empty)", "weight": 2, "value": 5 }
@@ -34,7 +52,13 @@
     "id": 4,
     "name": "Crow's Perch",
     "fuelSupply": 15,
-    "riskLevel": 4,
+    "events": [
+      { "type": "none", "probability": 0.64 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.08 },
+      { "type": "loot", "probability": 0.09 },
+      { "type": "ambush", "probability": 0.13 }
+    ],
     "items": [
       { "id": 401, "name": "Spare Radiator", "weight": 9, "value": 60 },
       { "id": 402, "name": "Dried Meat", "weight": 3, "value": 18 }
@@ -44,7 +68,13 @@
     "id": 5,
     "name": "Smasher's Rest",
     "fuelSupply": 5,
-    "riskLevel": 8,
+    "events": [
+      { "type": "none", "probability": 0.49 },
+      { "type": "fuel_loss", "probability": 0.08 },
+      { "type": "fuel_bonus", "probability": 0.05 },
+      { "type": "loot", "probability": 0.09 },
+      { "type": "ambush", "probability": 0.27 }
+    ],
     "items": [
       { "id": 501, "name": "Rusty Ammo Box", "weight": 6, "value": 55 },
       { "id": 502, "name": "Crowbar", "weight": 4, "value": 22 }
@@ -54,7 +84,13 @@
     "id": 6,
     "name": "Bleak Junction",
     "fuelSupply": 20,
-    "riskLevel": 3,
+    "events": [
+      { "type": "none", "probability": 0.69 },
+      { "type": "fuel_loss", "probability": 0.05 },
+      { "type": "fuel_bonus", "probability": 0.09 },
+      { "type": "loot", "probability": 0.08 },
+      { "type": "ambush", "probability": 0.09 }
+    ],
     "items": [
       { "id": 601, "name": "High-Grade Spark Plugs", "weight": 2, "value": 30 },
       { "id": 602, "name": "Leather Harness", "weight": 5, "value": 25 }
@@ -64,7 +100,13 @@
     "id": 7,
     "name": "Feral Market",
     "fuelSupply": 0,
-    "riskLevel": 9,
+    "events": [
+      { "type": "none", "probability": 0.44 },
+      { "type": "fuel_loss", "probability": 0.09 },
+      { "type": "fuel_bonus", "probability": 0.04 },
+      { "type": "loot", "probability": 0.12 },
+      { "type": "ambush", "probability": 0.31 }
+    ],
     "items": [
       { "id": 701, "name": "Black-Market Fuel Drum", "weight": 10, "value": 95 },
       { "id": 702, "name": "Stolen Radio", "weight": 3, "value": 28 }
@@ -74,7 +116,13 @@
     "id": 8,
     "name": "Gallows Ridge",
     "fuelSupply": 8,
-    "riskLevel": 6,
+    "events": [
+      { "type": "none", "probability": 0.61 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.06 },
+      { "type": "loot", "probability": 0.07 },
+      { "type": "ambush", "probability": 0.20 }
+    ],
     "items": [
       { "id": 801, "name": "Field Repair Kit", "weight": 5, "value": 35 },
       { "id": 802, "name": "Binoculars", "weight": 2, "value": 20 }
@@ -84,7 +132,13 @@
     "id": 9,
     "name": "Dustway",
     "fuelSupply": 12,
-    "riskLevel": 5,
+    "events": [
+      { "type": "none", "probability": 0.64 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.07 },
+      { "type": "loot", "probability": 0.07 },
+      { "type": "ambush", "probability": 0.16 }
+    ],
     "items": [
       { "id": 901, "name": "Canned Fuel Stabilizer", "weight": 1, "value": 15 },
       { "id": 902, "name": "Maps (worn)", "weight": 1, "value": 8 }
@@ -94,7 +148,13 @@
     "id": 10,
     "name": "Outpost Echo",
     "fuelSupply": 0,
-    "riskLevel": 4,
+    "events": [
+      { "type": "none", "probability": 0.67 },
+      { "type": "fuel_loss", "probability": 0.07 },
+      { "type": "fuel_bonus", "probability": 0.04 },
+      { "type": "loot", "probability": 0.09 },
+      { "type": "ambush", "probability": 0.13 }
+    ],
     "items": [
       { "id": 1001, "name": "Portable Generator", "weight": 12, "value": 85 },
       { "id": 1002, "name": "Spare Belts", "weight": 3, "value": 18 }
@@ -104,7 +164,13 @@
     "id": 11,
     "name": "Scrap Alley",
     "fuelSupply": 7,
-    "riskLevel": 6,
+    "events": [
+      { "type": "none", "probability": 0.61 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.06 },
+      { "type": "loot", "probability": 0.07 },
+      { "type": "ambush", "probability": 0.20 }
+    ],
     "items": [
       { "id": 1101, "name": "Metal Plates", "weight": 10, "value": 40 },
       { "id": 1102, "name": "Weld Torch", "weight": 4, "value": 32 }
@@ -114,7 +180,13 @@
     "id": 12,
     "name": "Trial Flats",
     "fuelSupply": 25,
-    "riskLevel": 2,
+    "events": [
+      { "type": "none", "probability": 0.71 },
+      { "type": "fuel_loss", "probability": 0.04 },
+      { "type": "fuel_bonus", "probability": 0.10 },
+      { "type": "loot", "probability": 0.09 },
+      { "type": "ambush", "probability": 0.06 }
+    ],
     "items": [
       { "id": 1201, "name": "Fresh Fuel Can", "weight": 6, "value": 60 },
       { "id": 1202, "name": "Medic Herbs", "weight": 2, "value": 22 }
@@ -124,7 +196,13 @@
     "id": 13,
     "name": "Bonebridge",
     "fuelSupply": 0,
-    "riskLevel": 7,
+    "events": [
+      { "type": "none", "probability": 0.57 },
+      { "type": "fuel_loss", "probability": 0.08 },
+      { "type": "fuel_bonus", "probability": 0.04 },
+      { "type": "loot", "probability": 0.07 },
+      { "type": "ambush", "probability": 0.24 }
+    ],
     "items": [
       { "id": 1301, "name": "Hunting Trap", "weight": 3, "value": 14 },
       { "id": 1302, "name": "Old Compass", "weight": 1, "value": 9 }
@@ -134,7 +212,13 @@
     "id": 14,
     "name": "Thunder Wash",
     "fuelSupply": 18,
-    "riskLevel": 5,
+    "events": [
+      { "type": "none", "probability": 0.61 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.09 },
+      { "type": "loot", "probability": 0.08 },
+      { "type": "ambush", "probability": 0.16 }
+    ],
     "items": [
       { "id": 1401, "name": "Coolant Pack", "weight": 4, "value": 36 },
       { "id": 1402, "name": "Water Purifier", "weight": 5, "value": 48 }
@@ -144,7 +228,13 @@
     "id": 15,
     "name": "Ridge Haven",
     "fuelSupply": 30,
-    "riskLevel": 3,
+    "events": [
+      { "type": "none", "probability": 0.64 },
+      { "type": "fuel_loss", "probability": 0.05 },
+      { "type": "fuel_bonus", "probability": 0.12 },
+      { "type": "loot", "probability": 0.10 },
+      { "type": "ambush", "probability": 0.09 }
+    ],
     "items": [
       { "id": 1501, "name": "Barrel of Oil", "weight": 12, "value": 70 },
       { "id": 1502, "name": "Trade Trinkets", "weight": 2, "value": 24 }
@@ -154,7 +244,13 @@
     "id": 16,
     "name": "Saltworks",
     "fuelSupply": 10,
-    "riskLevel": 6,
+    "events": [
+      { "type": "none", "probability": 0.61 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.07 },
+      { "type": "loot", "probability": 0.06 },
+      { "type": "ambush", "probability": 0.20 }
+    ],
     "items": [
       { "id": 1601, "name": "Salt Bricks", "weight": 8, "value": 30 },
       { "id": 1602, "name": "Spare Pistons", "weight": 6, "value": 48 }
@@ -164,7 +260,13 @@
     "id": 17,
     "name": "Half-Moon Camp",
     "fuelSupply": 5,
-    "riskLevel": 4,
+    "events": [
+      { "type": "none", "probability": 0.71 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.05 },
+      { "type": "loot", "probability": 0.05 },
+      { "type": "ambush", "probability": 0.13 }
+    ],
     "items": [
       { "id": 1701, "name": "Lamp Oil", "weight": 2, "value": 14 },
       { "id": 1702, "name": "Silenced Horn", "weight": 1, "value": 10 }
@@ -174,7 +276,13 @@
     "id": 18,
     "name": "Graveyard Crossing",
     "fuelSupply": 0,
-    "riskLevel": 8,
+    "events": [
+      { "type": "none", "probability": 0.58 },
+      { "type": "fuel_loss", "probability": 0.09 },
+      { "type": "fuel_bonus", "probability": 0.04 },
+      { "type": "loot", "probability": 0.06 },
+      { "type": "ambush", "probability": 0.27 }
+    ],
     "items": [
       { "id": 1801, "name": "Rare Alloy", "weight": 6, "value": 90 },
       { "id": 1802, "name": "Old Medallion", "weight": 1, "value": 40 }
@@ -184,7 +292,13 @@
     "id": 19,
     "name": "Haven's Gate",
     "fuelSupply": 22,
-    "riskLevel": 3,
+    "events": [
+      { "type": "none", "probability": 0.65 },
+      { "type": "fuel_loss", "probability": 0.05 },
+      { "type": "fuel_bonus", "probability": 0.10 },
+      { "type": "loot", "probability": 0.11 },
+      { "type": "ambush", "probability": 0.09 }
+    ],
     "items": [
       { "id": 1901, "name": "Fresh Tires", "weight": 9, "value": 55 },
       { "id": 1902, "name": "Medical Pack (large)", "weight": 6, "value": 65 }
@@ -194,7 +308,13 @@
     "id": 20,
     "name": "Ironreach",
     "fuelSupply": 14,
-    "riskLevel": 5,
+    "events": [
+      { "type": "none", "probability": 0.64 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.08 },
+      { "type": "loot", "probability": 0.06 },
+      { "type": "ambush", "probability": 0.16 }
+    ],
     "items": [
       { "id": 2001, "name": "Water Cans", "weight": 4, "value": 18 },
       { "id": 2002, "name": "Spare Parts", "weight": 6, "value": 28 }
@@ -204,7 +324,13 @@
     "id": 21,
     "name": "Sandspire",
     "fuelSupply": 12,
-    "riskLevel": 6,
+    "events": [
+      { "type": "none", "probability": 0.62 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.07 },
+      { "type": "loot", "probability": 0.05 },
+      { "type": "ambush", "probability": 0.20 }
+    ],
     "items": [
       { "id": 2101, "name": "Broken Goggles", "weight": 1, "value": 10 },
       { "id": 2102, "name": "Scrap Metal", "weight": 3, "value": 15 }
@@ -214,7 +340,13 @@
     "id": 22,
     "name": "Dustspire Outpost",
     "fuelSupply": 20,
-    "riskLevel": 4,
+    "events": [
+      { "type": "none", "probability": 0.67 },
+      { "type": "fuel_loss", "probability": 0.05 },
+      { "type": "fuel_bonus", "probability": 0.09 },
+      { "type": "loot", "probability": 0.06 },
+      { "type": "ambush", "probability": 0.13 }
+    ],
     "items": [
       { "id": 2201, "name": "Spare Hoses", "weight": 2, "value": 20 },
       { "id": 2202, "name": "Signal Flare", "weight": 1, "value": 12 }
@@ -224,7 +356,13 @@
     "id": 23,
     "name": "Rust Hollow",
     "fuelSupply": 18,
-    "riskLevel": 7,
+    "events": [
+      { "type": "none", "probability": 0.52 },
+      { "type": "fuel_loss", "probability": 0.08 },
+      { "type": "fuel_bonus", "probability": 0.09 },
+      { "type": "loot", "probability": 0.07 },
+      { "type": "ambush", "probability": 0.24 }
+    ],
     "items": [
       { "id": 2301, "name": "Old Wrench", "weight": 3, "value": 18 },
       { "id": 2302, "name": "Scrap Circuit", "weight": 2, "value": 25 }
@@ -234,7 +372,13 @@
     "id": 24,
     "name": "Blister Point",
     "fuelSupply": 15,
-    "riskLevel": 5,
+    "events": [
+      { "type": "none", "probability": 0.65 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.08 },
+      { "type": "loot", "probability": 0.05 },
+      { "type": "ambush", "probability": 0.16 }
+    ],
     "items": [
       { "id": 2401, "name": "Portable Lantern", "weight": 2, "value": 15 },
       { "id": 2402, "name": "Rusted Chain", "weight": 4, "value": 20 }
@@ -244,7 +388,13 @@
     "id": 25,
     "name": "Iron Flats",
     "fuelSupply": 10,
-    "riskLevel": 6,
+    "events": [
+      { "type": "none", "probability": 0.62 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.07 },
+      { "type": "loot", "probability": 0.05 },
+      { "type": "ambush", "probability": 0.20 }
+    ],
     "items": [
       { "id": 2501, "name": "Metal Rods", "weight": 5, "value": 25 },
       { "id": 2502, "name": "Empty Barrel", "weight": 6, "value": 15 }
@@ -254,7 +404,13 @@
     "id": 26,
     "name": "Shale Ridge",
     "fuelSupply": 8,
-    "riskLevel": 4,
+    "events": [
+      { "type": "none", "probability": 0.71 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.06 },
+      { "type": "loot", "probability": 0.04 },
+      { "type": "ambush", "probability": 0.13 }
+    ],
     "items": [
       { "id": 2601, "name": "Fuel Canister", "weight": 4, "value": 40 },
       { "id": 2602, "name": "Scrap Planks", "weight": 3, "value": 12 }
@@ -264,7 +420,13 @@
     "id": 27,
     "name": "Broken Vale",
     "fuelSupply": 22,
-    "riskLevel": 3,
+    "events": [
+      { "type": "none", "probability": 0.70 },
+      { "type": "fuel_loss", "probability": 0.05 },
+      { "type": "fuel_bonus", "probability": 0.10 },
+      { "type": "loot", "probability": 0.06 },
+      { "type": "ambush", "probability": 0.09 }
+    ],
     "items": [
       { "id": 2701, "name": "Tool Box", "weight": 6, "value": 35 },
       { "id": 2702, "name": "Spare Spark Plug", "weight": 1, "value": 15 }
@@ -274,7 +436,13 @@
     "id": 28,
     "name": "Ashen Pass",
     "fuelSupply": 16,
-    "riskLevel": 5,
+    "events": [
+      { "type": "none", "probability": 0.65 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.08 },
+      { "type": "loot", "probability": 0.05 },
+      { "type": "ambush", "probability": 0.16 }
+    ],
     "items": [
       { "id": 2801, "name": "Repair Kit", "weight": 5, "value": 30 },
       { "id": 2802, "name": "Old Battery", "weight": 3, "value": 20 }
@@ -284,7 +452,13 @@
     "id": 29,
     "name": "Frostbark Outpost",
     "fuelSupply": 20,
-    "riskLevel": 4,
+    "events": [
+      { "type": "none", "probability": 0.66 },
+      { "type": "fuel_loss", "probability": 0.05 },
+      { "type": "fuel_bonus", "probability": 0.10 },
+      { "type": "loot", "probability": 0.06 },
+      { "type": "ambush", "probability": 0.13 }
+    ],
     "items": [
       { "id": 2901, "name": "Ice Pick", "weight": 3, "value": 25 },
       { "id": 2902, "name": "Frost Rations", "weight": 2, "value": 18 }
@@ -294,7 +468,13 @@
     "id": 30,
     "name": "Thornfall",
     "fuelSupply": 25,
-    "riskLevel": 6,
+    "events": [
+      { "type": "none", "probability": 0.56 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.10 },
+      { "type": "loot", "probability": 0.08 },
+      { "type": "ambush", "probability": 0.20 }
+    ],
     "items": [
       { "id": 3001, "name": "Barrel of Oil", "weight": 8, "value": 50 },
       { "id": 3002, "name": "Spare Tires", "weight": 10, "value": 45 }
@@ -304,7 +484,13 @@
     "id": 31,
     "name": "Copper Plains",
     "fuelSupply": 12,
-    "riskLevel": 7,
+    "events": [
+      { "type": "none", "probability": 0.57 },
+      { "type": "fuel_loss", "probability": 0.07 },
+      { "type": "fuel_bonus", "probability": 0.07 },
+      { "type": "loot", "probability": 0.05 },
+      { "type": "ambush", "probability": 0.24 }
+    ],
     "items": [
       { "id": 3101, "name": "Worn Rope", "weight": 2, "value": 10 },
       { "id": 3102, "name": "Metal Scraps", "weight": 4, "value": 20 }
@@ -314,7 +500,13 @@
     "id": 32,
     "name": "Stonewatch",
     "fuelSupply": 18,
-    "riskLevel": 5,
+    "events": [
+      { "type": "none", "probability": 0.63 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.09 },
+      { "type": "loot", "probability": 0.06 },
+      { "type": "ambush", "probability": 0.16 }
+    ],
     "items": [
       { "id": 3201, "name": "Portable Furnace", "weight": 6, "value": 40 },
       { "id": 3202, "name": "Iron Nails", "weight": 2, "value": 15 }
@@ -324,7 +516,13 @@
     "id": 33,
     "name": "Cragspire",
     "fuelSupply": 10,
-    "riskLevel": 6,
+    "events": [
+      { "type": "none", "probability": 0.61 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.07 },
+      { "type": "loot", "probability": 0.06 },
+      { "type": "ambush", "probability": 0.20 }
+    ],
     "items": [
       { "id": 3301, "name": "Spare Wheel", "weight": 8, "value": 50 },
       { "id": 3302, "name": "Old Helmet", "weight": 2, "value": 15 }
@@ -334,7 +532,13 @@
     "id": 34,
     "name": "Iron Hollow",
     "fuelSupply": 14,
-    "riskLevel": 5,
+    "events": [
+      { "type": "none", "probability": 0.65 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.08 },
+      { "type": "loot", "probability": 0.05 },
+      { "type": "ambush", "probability": 0.16 }
+    ],
     "items": [
       { "id": 3401, "name": "Tool Set", "weight": 6, "value": 35 },
       { "id": 3402, "name": "Canned Fuel", "weight": 3, "value": 20 }
@@ -344,7 +548,13 @@
     "id": 35,
     "name": "Rustpeak",
     "fuelSupply": 20,
-    "riskLevel": 3,
+    "events": [
+      { "type": "none", "probability": 0.68 },
+      { "type": "fuel_loss", "probability": 0.05 },
+      { "type": "fuel_bonus", "probability": 0.10 },
+      { "type": "loot", "probability": 0.08 },
+      { "type": "ambush", "probability": 0.09 }
+    ],
     "items": [
       { "id": 3501, "name": "Engine Parts", "weight": 10, "value": 60 },
       { "id": 3502, "name": "Tire Chains", "weight": 5, "value": 30 }
@@ -354,7 +564,13 @@
     "id": 36,
     "name": "Blightfield",
     "fuelSupply": 16,
-    "riskLevel": 6,
+    "events": [
+      { "type": "none", "probability": 0.59 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.08 },
+      { "type": "loot", "probability": 0.07 },
+      { "type": "ambush", "probability": 0.20 }
+    ],
     "items": [
       { "id": 3601, "name": "Fuel Barrel", "weight": 12, "value": 70 },
       { "id": 3602, "name": "Repair Tools", "weight": 4, "value": 25 }
@@ -364,7 +580,13 @@
     "id": 37,
     "name": "Grim Hollow",
     "fuelSupply": 12,
-    "riskLevel": 4,
+    "events": [
+      { "type": "none", "probability": 0.69 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.07 },
+      { "type": "loot", "probability": 0.05 },
+      { "type": "ambush", "probability": 0.13 }
+    ],
     "items": [
       { "id": 3701, "name": "Rusty Pipe", "weight": 5, "value": 15 },
       { "id": 3702, "name": "Old Harness", "weight": 3, "value": 20 }
@@ -374,7 +596,13 @@
     "id": 38,
     "name": "Crimson Vale",
     "fuelSupply": 18,
-    "riskLevel": 5,
+    "events": [
+      { "type": "none", "probability": 0.63 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.09 },
+      { "type": "loot", "probability": 0.06 },
+      { "type": "ambush", "probability": 0.16 }
+    ],
     "items": [
       { "id": 3801, "name": "Fire Oil", "weight": 6, "value": 45 },
       { "id": 3802, "name": "Spare Bolts", "weight": 2, "value": 18 }
@@ -384,7 +612,13 @@
     "id": 39,
     "name": "Ironfang Outpost",
     "fuelSupply": 22,
-    "riskLevel": 6,
+    "events": [
+      { "type": "none", "probability": 0.58 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.10 },
+      { "type": "loot", "probability": 0.06 },
+      { "type": "ambush", "probability": 0.20 }
+    ],
     "items": [
       { "id": 3901, "name": "Iron Harness", "weight": 5, "value": 35 },
       { "id": 3902, "name": "Old Gear", "weight": 3, "value": 20 }
@@ -394,7 +628,13 @@
     "id": 40,
     "name": "Shattered Cliffs",
     "fuelSupply": 15,
-    "riskLevel": 4,
+    "events": [
+      { "type": "none", "probability": 0.68 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.08 },
+      { "type": "loot", "probability": 0.05 },
+      { "type": "ambush", "probability": 0.13 }
+    ],
     "items": [
       { "id": 4001, "name": "Climbing Rope", "weight": 3, "value": 25 },
       { "id": 4002, "name": "Repair Oil", "weight": 2, "value": 18 }
@@ -404,7 +644,13 @@
     "id": 41,
     "name": "Dustreach",
     "fuelSupply": 12,
-    "riskLevel": 5,
+    "events": [
+      { "type": "none", "probability": 0.66 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.07 },
+      { "type": "loot", "probability": 0.05 },
+      { "type": "ambush", "probability": 0.16 }
+    ],
     "items": [
       { "id": 4101, "name": "Scrap Sheet", "weight": 4, "value": 20 },
       { "id": 4102, "name": "Field Lantern", "weight": 2, "value": 15 }
@@ -414,7 +660,13 @@
     "id": 42,
     "name": "Thunder Flats",
     "fuelSupply": 20,
-    "riskLevel": 3,
+    "events": [
+      { "type": "none", "probability": 0.69 },
+      { "type": "fuel_loss", "probability": 0.05 },
+      { "type": "fuel_bonus", "probability": 0.10 },
+      { "type": "loot", "probability": 0.07 },
+      { "type": "ambush", "probability": 0.09 }
+    ],
     "items": [
       { "id": 4201, "name": "Fuel Drum", "weight": 10, "value": 60 },
       { "id": 4202, "name": "Old Maps", "weight": 2, "value": 15 }
@@ -424,7 +676,13 @@
     "id": 43,
     "name": "Ironwatch",
     "fuelSupply": 10,
-    "riskLevel": 6,
+    "events": [
+      { "type": "none", "probability": 0.62 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.07 },
+      { "type": "loot", "probability": 0.05 },
+      { "type": "ambush", "probability": 0.20 }
+    ],
     "items": [
       { "id": 4301, "name": "Spare Blades", "weight": 4, "value": 25 },
       { "id": 4302, "name": "Signal Horn", "weight": 1, "value": 12 }
@@ -434,7 +692,13 @@
     "id": 44,
     "name": "Stonefang",
     "fuelSupply": 18,
-    "riskLevel": 5,
+    "events": [
+      { "type": "none", "probability": 0.63 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.09 },
+      { "type": "loot", "probability": 0.06 },
+      { "type": "ambush", "probability": 0.16 }
+    ],
     "items": [
       { "id": 4401, "name": "Iron Scrap", "weight": 5, "value": 25 },
       { "id": 4402, "name": "Repair Manual", "weight": 1, "value": 15 }
@@ -444,7 +708,13 @@
     "id": 45,
     "name": "Blackridge",
     "fuelSupply": 22,
-    "riskLevel": 4,
+    "events": [
+      { "type": "none", "probability": 0.65 },
+      { "type": "fuel_loss", "probability": 0.05 },
+      { "type": "fuel_bonus", "probability": 0.10 },
+      { "type": "loot", "probability": 0.07 },
+      { "type": "ambush", "probability": 0.13 }
+    ],
     "items": [
       { "id": 4501, "name": "Spare Engine", "weight": 10, "value": 70 },
       { "id": 4502, "name": "Oil Canister", "weight": 6, "value": 30 }
@@ -454,7 +724,13 @@
     "id": 46,
     "name": "Shatterpoint",
     "fuelSupply": 16,
-    "riskLevel": 5,
+    "events": [
+      { "type": "none", "probability": 0.64 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.08 },
+      { "type": "loot", "probability": 0.06 },
+      { "type": "ambush", "probability": 0.16 }
+    ],
     "items": [
       { "id": 4601, "name": "Fuel Barrel", "weight": 12, "value": 65 },
       { "id": 4602, "name": "Tool Kit", "weight": 4, "value": 25 }
@@ -464,7 +740,13 @@
     "id": 47,
     "name": "Ironspire",
     "fuelSupply": 12,
-    "riskLevel": 6,
+    "events": [
+      { "type": "none", "probability": 0.62 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.07 },
+      { "type": "loot", "probability": 0.05 },
+      { "type": "ambush", "probability": 0.20 }
+    ],
     "items": [
       { "id": 4701, "name": "Metal Sheet", "weight": 5, "value": 25 },
       { "id": 4702, "name": "Rope Coil", "weight": 3, "value": 15 }
@@ -474,7 +756,13 @@
     "id": 48,
     "name": "Ashen Peaks",
     "fuelSupply": 20,
-    "riskLevel": 4,
+    "events": [
+      { "type": "none", "probability": 0.66 },
+      { "type": "fuel_loss", "probability": 0.05 },
+      { "type": "fuel_bonus", "probability": 0.10 },
+      { "type": "loot", "probability": 0.06 },
+      { "type": "ambush", "probability": 0.13 }
+    ],
     "items": [
       { "id": 4801, "name": "Spare Oil Drum", "weight": 10, "value": 50 },
       { "id": 4802, "name": "Field Rations", "weight": 4, "value": 25 }
@@ -484,7 +772,13 @@
     "id": 49,
     "name": "Frostfang",
     "fuelSupply": 18,
-    "riskLevel": 5,
+    "events": [
+      { "type": "none", "probability": 0.64 },
+      { "type": "fuel_loss", "probability": 0.06 },
+      { "type": "fuel_bonus", "probability": 0.09 },
+      { "type": "loot", "probability": 0.05 },
+      { "type": "ambush", "probability": 0.16 }
+    ],
     "items": [
       { "id": 4901, "name": "Ice Pick", "weight": 3, "value": 20 },
       { "id": 4902, "name": "Scrap Metal", "weight": 4, "value": 15 }
@@ -494,7 +788,13 @@
     "id": 50,
     "name": "Gas Town",
     "fuelSupply": 100,
-    "riskLevel": 2,
+    "events": [
+      { "type": "none", "probability": 1.00 },
+      { "type": "fuel_loss", "probability": 0.00 },
+      { "type": "fuel_bonus", "probability": 0.00 },
+      { "type": "loot", "probability": 0.00 },
+      { "type": "ambush", "probability": 0.00 }
+    ],
     "items": [
       { "id": 5001, "name": "Bulk Fuel (buyback)", "weight": 30, "value": 200 },
       { "id": 5002, "name": "Market Credit", "weight": 0, "value": 0 }

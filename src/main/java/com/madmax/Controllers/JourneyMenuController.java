@@ -67,13 +67,11 @@ public class JourneyMenuController {
         int nextLoc = selectedStep.getOutpost().getId();
         database.getWarRig().setLocationId(nextLoc);
         database.getWarRig().refuel(selectedStep.getOutpost().getFuelSupply());
-        System.out.println("Fuel: " + database.getWarRig().getFuel());
 
         route = new ArrayList<>();
         steps = new ArrayList<>();
 
         JourneyUtils.dijkstra(nextLoc, 50, database.getAdjList(), database.getOutposts(), route, steps, database.getWarRig());
-        JourneyUtils.updateRisk(steps);
 
         currentPath.getItems().setAll(steps);
 
@@ -81,10 +79,10 @@ public class JourneyMenuController {
 
     public void handleDetour(String str) {
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Attention!");
         alert.setHeaderText(null);
-        alert.setContentText("Detour required! " + str + " Searching for nearest safe outpost...");
+        alert.setContentText("Detour required! " + str + " Searching for nearest outpost...");
         alert.showAndWait();
 
         int newLoc = JourneyUtils.detour(
@@ -120,7 +118,6 @@ public class JourneyMenuController {
             route = new ArrayList<>();
             steps = new ArrayList<>();
             JourneyUtils.dijkstra(newLoc, 50, database.getAdjList(), database.getOutposts(), route, steps, database.getWarRig());
-            JourneyUtils.updateRisk(steps);
 
             currentPath.getItems().setAll(steps);
 
@@ -156,27 +153,10 @@ public class JourneyMenuController {
 
         }
 
+        Step selectedStep = currentPath.getSelectionModel().getSelectedItem();
         Step nextStep = currentPath.getItems().get(1);
         int fuelCost = nextStep.getFuelCost();
         int currFuel = database.getWarRig().getFuel();
-
-        int currRisk = nextStep.getOutpost().getRiskLevel();
-
-        if (fuelCost > currFuel) {
-
-            handleDetour("Insufficient fuel.");
-            return;
-
-        }
-
-        if (currRisk > 7) {
-
-            handleDetour("High chances of ambush or blockade.");
-            return;
-
-        }
-
-        Step selectedStep = currentPath.getSelectionModel().getSelectedItem();
 
         if (selectedStep == null) {
 
@@ -196,6 +176,13 @@ public class JourneyMenuController {
             alert.setHeaderText(null);
             alert.setContentText("You are already at this outpost! Select another one.");
             alert.showAndWait();
+            return;
+
+        }
+
+        if (fuelCost > currFuel) {
+
+            handleDetour("Insufficient fuel.");
             return;
 
         }
@@ -224,6 +211,8 @@ public class JourneyMenuController {
 
             travelToOutpost(selectedStep);
 
+            System.out.println("Fuel: " + database.getWarRig().getFuel());
+
             loadingPane.setVisible(false);
 
             currentPath.setDisable(false);
@@ -232,11 +221,24 @@ public class JourneyMenuController {
             showStats.setDisable(false);
 
             Platform.runLater(() -> {
+
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Journey Update");
                 alert.setHeaderText(null);
                 alert.setContentText("Successfully Reached Outpost: " + selectedStep.getOutpost().getName());
                 alert.showAndWait();
+
+                boolean ambushStatus = JourneyUtils.simulateEvents(
+                        database.getOutposts().get(database.getWarRig().getLocationId()),
+                        database.getWarRig()
+                );
+
+                if (ambushStatus) {
+
+                    handleDetour("Ambush encountered!");
+
+                }
+
             });
 
         });

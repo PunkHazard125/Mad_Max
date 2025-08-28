@@ -8,9 +8,14 @@
 
 <AnchorPane prefHeight="378.0" prefWidth="785.0" style="-fx-background-color: #0f141b;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.madmax.Controllers.JourneyMenuController">
     <children>
-      <ImageView fitHeight="386.0" fitWidth="791.0" layoutX="-3.0" layoutY="-4.0" nodeOrientation="INHERIT" opacity="0.08" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="386.0" fitWidth="791.0" layoutX="-3.0" layoutY="-4.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/journey_bg_img.png" />
+            <Image url="@../../images/journey_bg_img_2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="311.0" layoutX="55.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/route_text.png" />
          </image>
       </ImageView>
       <Group layoutX="54.0" layoutY="61.0">
@@ -24,7 +29,6 @@
             <ListView fx:id="currentPath" layoutY="30.0" prefHeight="130.0" prefWidth="303.0" stylesheets="@stylesheets/route.css" />
          </children>
       </Group>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="19.0" prefHeight="30.0" prefWidth="309.0" style="-fx-font-family: Bungee; -fx-font-size: 22;" text="Best Route to Gas Town" textAlignment="CENTER" textFill="#d5d4d0" />
         <Button fx:id="continueJourney" layoutX="54.0" layoutY="246.0" mnemonicParsing="false" onAction="#handleTravel" prefHeight="42.0" prefWidth="205.0" stylesheets="@stylesheets/continueJourney.css" text="CONTINUE JOURNEY" textAlignment="CENTER" textFill="#e3dbca">
             <font>
                 <Font name="Bungee" size="18.0" />

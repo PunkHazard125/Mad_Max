@@ -32,6 +32,14 @@ public class Step {
 
     @Override
     public String toString() {
+
+        if (getFuelCost() == 0) {
+
+            return outpost.getName()
+                    + " | Current Location";
+
+        }
+
         return outpost.getName()
                 + " | Cost: " + fuelCost
                 + " | Rate: " + String.format("%.2f", successRate * 100) + "% ";

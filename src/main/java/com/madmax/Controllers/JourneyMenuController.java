@@ -2,20 +2,27 @@ package com.madmax.Controllers;
 
 import com.madmax.Management.Database;
 import com.madmax.Management.JourneyUtils;
+import com.madmax.Models.Item;
 import com.madmax.Models.Outpost;
 import com.madmax.Models.Step;
+import com.madmax.Models.Vehicle;
+import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
+import javafx.animation.SequentialTransition;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
-
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class JourneyMenuController {
 
@@ -23,6 +30,7 @@ public class JourneyMenuController {
     private Stage primaryStage;
     private ArrayList<Outpost> route;
     private ArrayList<Step> steps;
+    private int totalDist;
 
     @FXML
     private ListView<Step> currentPath;
@@ -34,6 +42,20 @@ public class JourneyMenuController {
     private Button showStats;
     @FXML
     private AnchorPane loadingPane;
+    @FXML
+    private ProgressBar progressBar = new ProgressBar(0.00);
+    @FXML
+    private Label fuelStat;
+    @FXML
+    private Label creditStat;
+    @FXML
+    private Label profitStat;
+    @FXML
+    private ListView<String> cargoList;
+    @FXML
+    private AnchorPane statsPane;
+    @FXML
+    private Label notification;
 
     public void setDatabase(Database database) {
         this.database = database;
@@ -58,6 +80,9 @@ public class JourneyMenuController {
 
         currentPath.getItems().setAll(steps);
 
+        progressBar.setProgress(0.00);
+        totalDist = steps.getLast().getFuelCost();
+
     }
 
     public void travelToOutpost(Step selectedStep) {
@@ -74,6 +99,9 @@ public class JourneyMenuController {
         JourneyUtils.dijkstra(nextLoc, 50, database.getAdjList(), database.getOutposts(), route, steps, database.getWarRig());
 
         currentPath.getItems().setAll(steps);
+
+        double progress = 1 - ((double)steps.getLast().getFuelCost() / totalDist);
+        progressBar.setProgress(progress);
 
     }
 
@@ -97,7 +125,7 @@ public class JourneyMenuController {
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setTitle("Journey Failed");
             errorAlert.setHeaderText(null);
-            errorAlert.setContentText("No reachable safe outpost! Unfortunately the journey ends here.");
+            errorAlert.setContentText("No reachable outpost! Unfortunately the journey ends here.");
             errorAlert.showAndWait();
             handleExit();
             return;
@@ -110,6 +138,7 @@ public class JourneyMenuController {
         continueJourney.setDisable(true);
         endJourney.setDisable(true);
         showStats.setDisable(true);
+        progressBar.setDisable(true);
 
         PauseTransition delay = new PauseTransition(Duration.seconds(2.0));
 
@@ -127,14 +156,47 @@ public class JourneyMenuController {
             continueJourney.setDisable(false);
             endJourney.setDisable(false);
             showStats.setDisable(false);
+            progressBar.setDisable(false);
 
             Platform.runLater(() -> {
-                Alert updateAlert = new Alert(Alert.AlertType.INFORMATION);
-                updateAlert.setTitle("Journey Update");
-                updateAlert.setHeaderText(null);
-                updateAlert.setContentText("Successfully reached detour outpost: "
-                        + database.getOutposts().get(newLoc).getName());
-                updateAlert.showAndWait();
+
+                Vehicle warRig = database.getWarRig();
+                int prevCredits = warRig.getCredits();
+                int prevFuel = warRig.getFuel();
+
+                boolean ambushStatus = JourneyUtils.simulateEvents(
+                        database.getOutposts().get(database.getWarRig().getLocationId()),
+                        database.getWarRig()
+                );
+
+                if (ambushStatus) {
+
+                    handleDetour("Ambush encountered!");
+
+                }
+                else {
+
+                    JourneyUtils.handleCargo(database.getOutposts().get(database.getWarRig().getLocationId()),
+                            database.getWarRig());
+
+                    int newCredits = warRig.getCredits();
+                    int newFuel = warRig.getFuel();
+
+                    if (newFuel < prevFuel) {
+                        int fuelLost = prevFuel - newFuel;
+                        showNotification(notification, "Fuel lost during travel: " + fuelLost + "L");
+                    }
+                    else if (newFuel > prevFuel) {
+                        int bonusFuel = newFuel - prevFuel;
+                        showNotification(notification, "Bonus fuel found: " + bonusFuel + "L");
+                    }
+                    else if (newCredits > prevCredits) {
+                        int lootGained = newCredits - prevCredits;
+                        showNotification(notification, "Loot gained: " + lootGained + "C");
+                    }
+
+                }
+
             });
 
         });
@@ -204,6 +266,7 @@ public class JourneyMenuController {
         continueJourney.setDisable(true);
         endJourney.setDisable(true);
         showStats.setDisable(true);
+        progressBar.setDisable(true);
 
         PauseTransition delay = new PauseTransition(Duration.seconds(2.0));
 
@@ -211,22 +274,19 @@ public class JourneyMenuController {
 
             travelToOutpost(selectedStep);
 
-            System.out.println("Fuel: " + database.getWarRig().getFuel());
-
             loadingPane.setVisible(false);
 
             currentPath.setDisable(false);
             continueJourney.setDisable(false);
             endJourney.setDisable(false);
             showStats.setDisable(false);
+            progressBar.setDisable(false);
 
             Platform.runLater(() -> {
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Journey Update");
-                alert.setHeaderText(null);
-                alert.setContentText("Successfully Reached Outpost: " + selectedStep.getOutpost().getName());
-                alert.showAndWait();
+                Vehicle warRig = database.getWarRig();
+                int prevCredits = warRig.getCredits();
+                int prevFuel = warRig.getFuel();
 
                 boolean ambushStatus = JourneyUtils.simulateEvents(
                         database.getOutposts().get(database.getWarRig().getLocationId()),
@@ -236,6 +296,28 @@ public class JourneyMenuController {
                 if (ambushStatus) {
 
                     handleDetour("Ambush encountered!");
+
+                }
+                else {
+
+                    JourneyUtils.handleCargo(database.getOutposts().get(database.getWarRig().getLocationId()),
+                            database.getWarRig());
+
+                    int newCredits = warRig.getCredits();
+                    int newFuel = warRig.getFuel();
+
+                    if (newFuel < prevFuel) {
+                        int fuelLost = prevFuel - newFuel;
+                        showNotification(notification, "Fuel drained: " + fuelLost + "L");
+                    }
+                    else if (newFuel > prevFuel) {
+                        int bonusFuel = newFuel - prevFuel;
+                        showNotification(notification, "Found extra fuel: " + bonusFuel + "L");
+                    }
+                    else if (newCredits > prevCredits) {
+                        int lootGained = newCredits - prevCredits;
+                        showNotification(notification, "Loot gained: " + lootGained + "C");
+                    }
 
                 }
 
@@ -248,9 +330,83 @@ public class JourneyMenuController {
     }
 
     @FXML
+    public void showStats() {
+
+        statsPane.setVisible(true);
+
+        currentPath.setDisable(true);
+        continueJourney.setDisable(true);
+        endJourney.setDisable(true);
+        showStats.setDisable(true);
+        progressBar.setDisable(true);
+
+        fuelStat.setText("Fuel Tank: " + database.getWarRig().getFuel() + "L / " + database.getWarRig().getFuelCapacity() + "L");
+        profitStat.setText("Profit: " + database.getWarRig().getProfit() + "C");
+        creditStat.setText("Stash: " + database.getWarRig().getCredits() + "C");
+
+        cargoList.getItems().clear();
+
+        for (Item item : database.getWarRig().getCargo()) {
+            cargoList.getItems().add(item.getName() + " | Value: " + item.getValue() + " Credit(s)");
+        }
+
+        TranslateTransition slideIn = new TranslateTransition(Duration.millis(400), statsPane);
+        slideIn.setFromX(-statsPane.getWidth());
+        slideIn.setToX(0);
+        slideIn.play();
+
+    }
+
+    @FXML
+    public void closeStats() {
+
+        TranslateTransition slideOut = new TranslateTransition(Duration.millis(400), statsPane);
+        slideOut.setFromX(0);
+        slideOut.setToX(-statsPane.getWidth());
+        slideOut.setOnFinished(e -> statsPane.setVisible(false));
+        slideOut.play();
+
+        currentPath.setDisable(false);
+        continueJourney.setDisable(false);
+        endJourney.setDisable(false);
+        showStats.setDisable(false);
+        progressBar.setDisable(false);
+
+    }
+
+    public void showNotification(Label notification, String message) {
+
+        notification.setText(message);
+        notification.setOpacity(0);
+        notification.setVisible(true);
+
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(600), notification);
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
+
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(1000), notification);
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+        fadeOut.setDelay(Duration.seconds(2));
+
+        SequentialTransition seq = new SequentialTransition(fadeIn, fadeOut);
+        seq.setOnFinished(e -> notification.setVisible(false));
+        seq.play();
+
+    }
+
+    @FXML
     public void handleExit() {
 
-        primaryStage.close();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation!");
+        alert.setHeaderText(null);
+        alert.setContentText("Are you sure you want to end the journey here?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            primaryStage.close();
+        }
 
     }
 

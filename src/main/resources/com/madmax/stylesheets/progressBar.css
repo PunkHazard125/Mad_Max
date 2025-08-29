@@ -1,0 +1,16 @@
+.progress-bar {
+    -fx-background-radius: 5px;
+    -fx-background-color: #d5d4d0;
+    -fx-padding: 2px;
+}
+
+.progress-bar > .track {
+    -fx-background-radius: 5px;
+    -fx-background-color: #d5d4d0;
+}
+
+.progress-bar > .bar {
+    -fx-background-radius: 5px;
+    -fx-background-insets: 0;
+    -fx-background-color: #116c6d;
+}

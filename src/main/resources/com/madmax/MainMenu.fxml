@@ -9,7 +9,7 @@
     <children>
       <ImageView fitHeight="378.0" fitWidth="784.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/main_bg_img_2.png" />
+            <Image url="@../../images/main_bg_img.png" />
          </image>
       </ImageView>
         <Button fx:id="startButton" layoutX="402.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleStart" prefHeight="42.0" prefWidth="178.0" stylesheets="@stylesheets/start.css" text="Start Journey" textAlignment="CENTER" textFill="#e3dbca">
@@ -37,5 +37,6 @@
             <Image url="@../../images/welcome_text.png" />
          </image>
       </ImageView>
+      <AnchorPane layoutY="-41.0" prefHeight="141.0" prefWidth="784.0" />
     </children>
 </AnchorPane>

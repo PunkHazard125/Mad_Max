@@ -1,9 +1,6 @@
 package com.madmax.Management;
 
-import com.madmax.Models.Outpost;
-import com.madmax.Models.Route;
-import com.madmax.Models.Step;
-import com.madmax.Models.Vehicle;
+import com.madmax.Models.*;
 import com.madmax.Simulation.Event;
 
 import java.util.*;
@@ -218,6 +215,58 @@ public class JourneyUtils {
         }
 
         return false;
+
+    }
+
+    public static void handleCargo(Outpost outpost, Vehicle warRig) {
+
+        ArrayList<Item> items = new ArrayList<>();
+        items.addAll(outpost.getItems());
+        items.addAll(warRig.getCargo());
+
+        int n = items.size();
+        int capacity = warRig.getCargoCapacity();
+
+        int[][] dp = new int[n + 1][capacity + 1];
+
+        for (int i = 1; i <= n; i++) {
+
+            int wt = items.get(i - 1).getWeight();
+            int val = items.get(i - 1).getValue();
+
+            for (int j = 1; j <= capacity; j++) {
+
+                if (wt <= j) {
+
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - wt] + val);
+
+                }
+                else {
+
+                    dp[i][j] = dp[i - 1][j];
+
+                }
+
+            }
+        }
+
+        warRig.getCargo().clear();
+
+        int w = capacity;
+
+        for (int i = n; i > 0 && w > 0; i--) {
+
+            if (dp[i][w] != dp[i - 1][w]) {
+
+                Item curr = items.get(i - 1);
+                warRig.getCargo().add(curr);
+                outpost.removeItem(curr);
+
+                w -= curr.getWeight();
+
+            }
+
+        }
 
     }
 

@@ -69,6 +69,20 @@ public class Vehicle {
         return weight;
     }
 
+    public int getProfit() {
+
+        int total = 0;
+
+        for (Item item : cargo) {
+
+            total += item.getValue();
+
+        }
+
+        return total;
+
+    }
+
     public void setLocationId(int locationId) {
         this.locationId = locationId;
     }

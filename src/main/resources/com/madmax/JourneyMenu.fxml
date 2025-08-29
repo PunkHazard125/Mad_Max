@@ -10,65 +10,107 @@
     <children>
       <ImageView fitHeight="386.0" fitWidth="791.0" layoutX="-3.0" layoutY="-4.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/journey_bg_img_2.png" />
+            <Image url="@../../images/journey_bg_img.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="311.0" layoutX="55.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="30.0" fitWidth="311.0" layoutX="55.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/route_text.png" />
          </image>
       </ImageView>
+      <Label fx:id="notification" alignment="CENTER" contentDisplay="CENTER" layoutX="55.0" layoutY="13.0" prefHeight="36.0" prefWidth="301.0" style="-fx-font-family: Bungee; -fx-font-size: 17; -fx-background-color: #db8828; -fx-background-radius: 5;" textAlignment="CENTER" textFill="#0d1015" visible="false" />
       <Group layoutX="54.0" layoutY="61.0">
          <children>
             <Group>
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="303.0" style="-fx-font-family: Cambria; -fx-font-size: 16; -fx-background-color: #2d519c; -fx-background-radius: 10;" text="SELECT NEXT OUTPOST" textAlignment="CENTER" textFill="#d5d4d0" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutY="24.0" prefHeight="30.0" prefWidth="303.0" style="-fx-font-family: Cambria; -fx-font-size: 16; -fx-background-color: #2d519c; -fx-background-radius: 5;" textAlignment="CENTER" textFill="#d5d4d0" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-1.0" prefHeight="30.0" prefWidth="303.0" style="-fx-font-family: Cambria; -fx-font-size: 16; -fx-background-color: #2d519c; -fx-background-radius: 10;" text="SELECT NEXT OUTPOST" textAlignment="CENTER" textFill="#d5d4d0" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutY="22.0" prefHeight="30.0" prefWidth="303.0" style="-fx-font-family: Cambria; -fx-font-size: 16; -fx-background-color: #2d519c; -fx-background-radius: 5;" textAlignment="CENTER" textFill="#d5d4d0" />
                </children>
             </Group>
-            <ListView fx:id="currentPath" layoutY="30.0" prefHeight="130.0" prefWidth="303.0" stylesheets="@stylesheets/route.css" />
+            <ListView fx:id="currentPath" layoutY="29.0" prefHeight="130.0" prefWidth="303.0" stylesheets="@stylesheets/route.css" />
          </children>
       </Group>
-        <Button fx:id="continueJourney" layoutX="54.0" layoutY="246.0" mnemonicParsing="false" onAction="#handleTravel" prefHeight="42.0" prefWidth="205.0" stylesheets="@stylesheets/continueJourney.css" text="CONTINUE JOURNEY" textAlignment="CENTER" textFill="#e3dbca">
-            <font>
-                <Font name="Bungee" size="18.0" />
-            </font>
-        </Button>
-        <Button fx:id="endJourney" layoutX="54.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="42.0" prefWidth="205.0" stylesheets="@stylesheets/endJourney.css" text="END JOURNEY" textAlignment="CENTER" textFill="#0a0a0a">
-            <font>
-                <Font name="Cambria Bold" size="18.0" />
-            </font>
-        </Button>
+      <Group layoutX="55.0" layoutY="230.0">
+         <children>
+            <ProgressBar fx:id="progressBar" layoutY="2.0" prefHeight="36.0" prefWidth="301.0" progress="0.0" stylesheets="@stylesheets/progressBar.css" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="82.0" layoutY="8.0" prefHeight="24.0" prefWidth="137.0" style="-fx-font-family: Bungee; -fx-font-size: 17;" text="PROGRESS....." textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+         </children>
+      </Group>
+      <Button fx:id="showStats" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="274.0" layoutY="278.0" mnemonicParsing="false" onAction="#showStats" prefHeight="82.0" prefWidth="82.0" stylesheets="@stylesheets/statsButton.css" textAlignment="CENTER" textFill="#e3dbca">
+         <font>
+            <Font name="Bungee" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/stats_icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="endJourney" layoutX="164.0" layoutY="278.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="82.0" prefWidth="82.0" stylesheets="@stylesheets/endJourney.css" textAlignment="CENTER" textFill="#0a0a0a">
+         <font>
+            <Font name="Cambria Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/end_icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="continueJourney" layoutX="55.0" layoutY="278.0" mnemonicParsing="false" onAction="#handleTravel" prefHeight="82.0" prefWidth="82.0" stylesheets="@stylesheets/continueJourney.css" textAlignment="CENTER" textFill="#e3dbca">
+         <font>
+            <Font name="Bungee" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/continue_icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
         <ImageView fitHeight="378.0" fitWidth="378.0" layoutX="410.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../images/journey_bg.png" />
             </image>
         </ImageView>
-      <Button fx:id="showStats" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="279.0" layoutY="246.0" mnemonicParsing="false" prefHeight="103.0" prefWidth="79.0" stylesheets="@stylesheets/statsButton.css" textAlignment="CENTER" textFill="#e3dbca">
-         <font>
-            <Font name="Bungee" size="18.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="72.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/stats.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <AnchorPane fx:id="loadingPane" prefHeight="378.0" prefWidth="788.0" visible="false">
          <children>
             <Pane opacity="0.7" prefHeight="378.0" prefWidth="788.0" style="-fx-background-color: #0a0a0a;" />
-            <Pane prefHeight="177.0" prefWidth="303.0" style="-fx-background-color: #d5d4d0; -fx-background-radius: 10;" AnchorPane.bottomAnchor="146.0" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="431.0" AnchorPane.topAnchor="55.0">
+            <Pane prefHeight="211.0" prefWidth="303.0" style="-fx-background-color: #d5d4d0; -fx-background-radius: 10;" AnchorPane.bottomAnchor="112.0" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="431.0" AnchorPane.topAnchor="55.0">
                <children>
-                  <ImageView fitHeight="82.0" fitWidth="82.0" layoutX="108.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="82.0" fitWidth="82.0" layoutX="106.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/loading.gif" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="46.0" layoutY="108.0" prefHeight="54.0" prefWidth="216.0" style="-fx-font-family: Bungee; -fx-font-size: 18;" text="Travelling to next&#10;outpost....." textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="44.0" layoutY="129.0" prefHeight="54.0" prefWidth="216.0" style="-fx-font-family: Bungee; -fx-font-size: 18;" text="Travelling to next&#10;outpost....." textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
                </children>
             </Pane>
          </children></AnchorPane>
+      <AnchorPane fx:id="statsPane" prefHeight="378.0" prefWidth="405.0" visible="false">
+         <children>
+            <Pane layoutX="16.0" layoutY="16.0" prefHeight="346.0" prefWidth="378.0" style="-fx-background-color: #f2c0a9; -fx-background-radius: 10;">
+               <children>
+                  <ImageView fitHeight="41.0" fitWidth="334.0" layoutX="22.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/current_stats_text.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="fuelStat" contentDisplay="CENTER" layoutX="24.0" layoutY="80.0" prefHeight="25.0" prefWidth="216.0" style="-fx-font-family: Bungee; -fx-font-size: 18;" textFill="#0d1015" textOverrun="CENTER_ELLIPSIS" />
+                  <Label fx:id="creditStat" contentDisplay="CENTER" layoutX="24.0" layoutY="113.0" prefHeight="25.0" prefWidth="216.0" style="-fx-font-family: Bungee; -fx-font-size: 18;" textFill="#0d1015" textOverrun="CENTER_ELLIPSIS" />
+                  <Label fx:id="profitStat" contentDisplay="CENTER" layoutX="24.0" layoutY="146.0" prefHeight="25.0" prefWidth="216.0" style="-fx-font-family: Bungee; -fx-font-size: 18;" textFill="#0d1015" textOverrun="CENTER_ELLIPSIS" />
+                  <ListView fx:id="cargoList" layoutX="23.0" layoutY="183.0" prefHeight="130.0" prefWidth="334.0" stylesheets="@stylesheets/route.css" />
+                  <Button fx:id="closeStats" layoutX="275.0" layoutY="126.0" mnemonicParsing="false" onAction="#closeStats" prefHeight="41.0" prefWidth="82.0" stylesheets="@stylesheets/closeStats.css" text="CLOSE" textAlignment="CENTER" textFill="#e3dbca">
+                     <font>
+                        <Font name="Bungee" size="18.0" />
+                     </font>
+                  </Button>
+               </children></Pane>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

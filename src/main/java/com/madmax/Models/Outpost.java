@@ -3,6 +3,7 @@ package com.madmax.Models;
 import com.madmax.Simulation.Event;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Outpost {
 
@@ -96,4 +97,25 @@ public class Outpost {
     public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
+
+    public void removeItem(Item item) {
+
+        Iterator<Item> iter = items.iterator();
+
+        while (iter.hasNext()) {
+
+            Item curr = iter.next();
+
+            if (curr.getId() == item.getId()) {
+
+                iter.remove();
+                break;
+
+            }
+
+        }
+
+    }
+
+
 }

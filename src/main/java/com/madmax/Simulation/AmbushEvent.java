@@ -11,6 +11,7 @@ public class AmbushEvent extends Event {
     @Override
     public boolean apply(Vehicle vehicle) {
 
+        vehicle.addEventCount();
         return true;
 
     }

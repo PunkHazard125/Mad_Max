@@ -6,21 +6,20 @@ import com.madmax.Models.Item;
 import com.madmax.Models.Outpost;
 import com.madmax.Models.Step;
 import com.madmax.Models.Vehicle;
-import javafx.animation.FadeTransition;
-import javafx.animation.PauseTransition;
-import javafx.animation.SequentialTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -105,7 +104,7 @@ public class JourneyMenuController {
 
     }
 
-    public void handleDetour(String str) {
+    public void handleDetour(String str, boolean ambush) {
 
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Attention!");
@@ -122,12 +121,14 @@ public class JourneyMenuController {
 
         if (newLoc == -1) {
 
+            database.getWarRig().setAmbushed(ambush);
+
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setTitle("Journey Failed");
             errorAlert.setHeaderText(null);
             errorAlert.setContentText("No reachable outpost! Unfortunately the journey ends here.");
             errorAlert.showAndWait();
-            handleExit();
+            directExit();
             return;
 
         }
@@ -161,6 +162,20 @@ public class JourneyMenuController {
             Platform.runLater(() -> {
 
                 Vehicle warRig = database.getWarRig();
+
+                if (warRig.getLocationId() == 50) {
+
+                    Alert success = new Alert(Alert.AlertType.INFORMATION);
+                    success.setTitle("Journey Complete!");
+                    success.setHeaderText(null);
+                    success.setContentText("You’ve successfully reached Gas Town!");
+                    success.showAndWait();
+
+                    directExit();
+                    return;
+
+                }
+
                 int prevCredits = warRig.getCredits();
                 int prevFuel = warRig.getFuel();
 
@@ -171,7 +186,7 @@ public class JourneyMenuController {
 
                 if (ambushStatus) {
 
-                    handleDetour("Ambush encountered!");
+                    handleDetour("Ambush encountered!", true);
 
                 }
                 else {
@@ -210,7 +225,7 @@ public class JourneyMenuController {
 
         if (currentPath.getItems().size() <= 1) {
 
-            handleExit();
+            directExit();
             return;
 
         }
@@ -244,7 +259,7 @@ public class JourneyMenuController {
 
         if (fuelCost > currFuel) {
 
-            handleDetour("Insufficient fuel.");
+            handleDetour("Insufficient fuel.", false);
             return;
 
         }
@@ -285,6 +300,20 @@ public class JourneyMenuController {
             Platform.runLater(() -> {
 
                 Vehicle warRig = database.getWarRig();
+
+                if (warRig.getLocationId() == 50) {
+
+                    Alert success = new Alert(Alert.AlertType.INFORMATION);
+                    success.setTitle("Journey Complete!");
+                    success.setHeaderText(null);
+                    success.setContentText("You’ve successfully reached Gas Town!");
+                    success.showAndWait();
+
+                    directExit();
+                    return;
+
+                }
+
                 int prevCredits = warRig.getCredits();
                 int prevFuel = warRig.getFuel();
 
@@ -295,7 +324,7 @@ public class JourneyMenuController {
 
                 if (ambushStatus) {
 
-                    handleDetour("Ambush encountered!");
+                    handleDetour("Ambush encountered!", true);
 
                 }
                 else {
@@ -353,7 +382,13 @@ public class JourneyMenuController {
         TranslateTransition slideIn = new TranslateTransition(Duration.millis(400), statsPane);
         slideIn.setFromX(-statsPane.getWidth());
         slideIn.setToX(0);
-        slideIn.play();
+
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(400), statsPane);
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
+
+        ParallelTransition parallelTransition = new ParallelTransition(slideIn, fadeIn);
+        parallelTransition.play();
 
     }
 
@@ -363,8 +398,14 @@ public class JourneyMenuController {
         TranslateTransition slideOut = new TranslateTransition(Duration.millis(400), statsPane);
         slideOut.setFromX(0);
         slideOut.setToX(-statsPane.getWidth());
-        slideOut.setOnFinished(e -> statsPane.setVisible(false));
-        slideOut.play();
+
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(400), statsPane);
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+
+        ParallelTransition parallelTransition = new ParallelTransition(slideOut, fadeOut);
+        parallelTransition.setOnFinished(e -> statsPane.setVisible(false));
+        parallelTransition.play();
 
         currentPath.setDisable(false);
         continueJourney.setDisable(false);
@@ -405,7 +446,69 @@ public class JourneyMenuController {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            primaryStage.close();
+
+            try
+            {
+
+                database.journeyEndTime = LocalDateTime.now();
+
+                Stage currStage = (Stage) endJourney.getScene().getWindow();
+                currStage.close();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/madmax/FinalMenu.fxml"));
+                Parent root = loader.load();
+
+                Stage newStage = new Stage();
+
+                FinalMenuController controller = loader.getController();
+                controller.setDatabase(database);
+                controller.setPrimaryStage(newStage);
+                Image icon  = new Image(getClass().getResourceAsStream("/images/icon.png"));
+                newStage.getIcons().add(icon);
+                newStage.setTitle("Final Menu");
+                newStage.setScene(new Scene(root));
+                newStage.show();
+                newStage.setResizable(false);
+
+            }
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
+            }
+
+        }
+
+    }
+
+    public void directExit() {
+
+        try
+        {
+
+            database.journeyEndTime = LocalDateTime.now();
+
+            Stage currStage = (Stage) endJourney.getScene().getWindow();
+            currStage.close();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/madmax/FinalMenu.fxml"));
+            Parent root = loader.load();
+
+            Stage newStage = new Stage();
+
+            FinalMenuController controller = loader.getController();
+            controller.setDatabase(database);
+            controller.setPrimaryStage(newStage);
+            Image icon  = new Image(getClass().getResourceAsStream("/images/icon.png"));
+            newStage.getIcons().add(icon);
+            newStage.setTitle("Final Menu");
+            newStage.setScene(new Scene(root));
+            newStage.show();
+            newStage.setResizable(false);
+
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
         }
 
     }

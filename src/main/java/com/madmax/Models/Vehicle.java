@@ -10,6 +10,9 @@ public class Vehicle {
     private final int cargoCapacity;
     private int locationId;
     private int credits;
+    private int fuelConsumption;
+    private int eventsEncountered;
+    private boolean ambushed;
 
     public Vehicle(int f, int c) {
 
@@ -19,6 +22,9 @@ public class Vehicle {
         locationId = 1;
         credits = 0;
         cargo = new ArrayList<>();
+        fuelConsumption = 0;
+        eventsEncountered = 0;
+        ambushed = false;
 
     }
 
@@ -29,6 +35,9 @@ public class Vehicle {
         fuelCapacity = o.getFuelCapacity();
         cargoCapacity = o.getCargoCapacity();
         credits = o.getCredits();
+        fuelConsumption = o.fuelConsumption;
+        eventsEncountered = o.eventsEncountered;
+        ambushed = o.isAmbushed();
 
     }
 
@@ -83,6 +92,14 @@ public class Vehicle {
 
     }
 
+    public int getFuelConsumption() {
+        return fuelConsumption;
+    }
+
+    public int getEventCount() {
+        return eventsEncountered;
+    }
+
     public void setLocationId(int locationId) {
         this.locationId = locationId;
     }
@@ -92,6 +109,7 @@ public class Vehicle {
     }
 
     public void consumeFuel(int amount) {
+        fuelConsumption += Math.min(amount, fuel);
         fuel = Math.max(fuel - amount, 0);
     }
 
@@ -116,6 +134,18 @@ public class Vehicle {
 
     public void addCredits(int amount) {
         credits += amount;
+    }
+
+    public void addEventCount() {
+        eventsEncountered++;
+    }
+
+    public boolean isAmbushed() {
+        return ambushed;
+    }
+
+    public void setAmbushed(boolean ambushed) {
+        this.ambushed = ambushed;
     }
 
 }

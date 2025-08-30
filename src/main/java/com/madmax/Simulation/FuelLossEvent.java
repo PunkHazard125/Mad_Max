@@ -19,6 +19,8 @@ public class FuelLossEvent extends Event {
         int loss = Math.max(1, (int)(fuel * (0.05 + (rand.nextDouble() * 0.10))));
         vehicle.consumeFuel(loss);
 
+        vehicle.addEventCount();
+
         return false;
 
     }

@@ -4,6 +4,7 @@ import com.madmax.Models.Outpost;
 import com.madmax.Models.Route;
 import com.madmax.Models.Vehicle;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Database {
@@ -12,6 +13,7 @@ public class Database {
     private ArrayList<Outpost> outposts;
     private ArrayList<Route> routes;
     private ArrayList<ArrayList<Route>> adjList;
+    public LocalDateTime journeyEndTime;
 
     public Database() {
 

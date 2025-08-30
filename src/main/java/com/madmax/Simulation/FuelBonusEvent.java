@@ -19,6 +19,8 @@ public class FuelBonusEvent extends Event {
         int bonus = Math.max(1, (int)(fuel * (0.05 + (rand.nextDouble() * 0.10))));
         vehicle.refuel(bonus);
 
+        vehicle.addEventCount();
+
         return false;
 
     }

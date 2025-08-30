@@ -37,6 +37,5 @@
             <Image url="@../../images/welcome_text.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutY="-41.0" prefHeight="141.0" prefWidth="784.0" />
     </children>
 </AnchorPane>

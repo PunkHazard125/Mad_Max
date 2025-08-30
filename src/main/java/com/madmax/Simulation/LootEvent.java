@@ -18,6 +18,8 @@ public class LootEvent extends Event {
         int loot = Math.max(1, (int)(vehicle.getFuel() * (0.05 + rand.nextDouble() * 0.10)));
         vehicle.addCredits(loot);
 
+        vehicle.addEventCount();
+
         return false;
 
     }

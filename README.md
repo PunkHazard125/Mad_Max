@@ -3,7 +3,7 @@
 ## **Project Concept**
 
 ### Primary Idea:
-A post-apocalyptic journey simulation game set in the world of "Mad Max: Fury Road", where players make the decisions for the main character Max Rockatansky and drive a vehicle (War Rig) across a dangerous wasteland, visiting outposts, managing cargo, fuel, and avoiding ambushes. The game features strategic planning, resource management, and randomized events that affect the outcome of the journey.
+A post-apocalyptic journey simulation game set in the world of "Mad Max: Fury Road", where players make the decisions for the main character Max Rockatansky and drive a vehicle (War Rig) across a dangerous wasteland, visiting outposts, managing cargo, fuel, and avoiding ambushes. The game features strategic planning, resource management, and randomized events that affect the outcome of the journey. The target is to reach the final outpost called 'Gas Town' from the initial outpost 'Citadel', ensuring minimum fuel consumption and maximum cargo value.
 
 ### Key Classes:
 - **Vehicle (WarRig)**: Represents the player's vehicle with attributes like fuel, cargo capacity, credits, and fuel consumption.

@@ -86,11 +86,16 @@ public class JourneyMenuController {
 
     public void travelToOutpost(Step selectedStep) {
 
+        int nextLoc = selectedStep.getOutpost().getId();
+        int fuelSpace = database.getWarRig().getFuelCapacity() - database.getWarRig().getFuel();
+        int supply = selectedStep.getOutpost().getFuelSupply();
+        int fuelTaken = Math.min(fuelSpace, supply);
+
         database.getWarRig().consumeFuel(selectedStep.getFuelCost());
 
-        int nextLoc = selectedStep.getOutpost().getId();
         database.getWarRig().setLocationId(nextLoc);
-        database.getWarRig().refuel(selectedStep.getOutpost().getFuelSupply());
+        database.getWarRig().refuel(supply);
+        database.getOutposts().get(nextLoc).setFuelSupply(supply - fuelTaken);
 
         route = new ArrayList<>();
         steps = new ArrayList<>();
@@ -370,7 +375,7 @@ public class JourneyMenuController {
         progressBar.setDisable(true);
 
         fuelStat.setText("Fuel Tank: " + database.getWarRig().getFuel() + "L / " + database.getWarRig().getFuelCapacity() + "L");
-        profitStat.setText("Profit: " + database.getWarRig().getProfit() + "C");
+        profitStat.setText("Cargo Value: " + database.getWarRig().getProfit() + "C");
         creditStat.setText("Stash: " + database.getWarRig().getCredits() + "C");
 
         cargoList.getItems().clear();

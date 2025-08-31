@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class App extends Application {
@@ -24,6 +25,8 @@ public class App extends Application {
 
         try
         {
+            Font.loadFont(getClass().getResource("/fonts/Bungee.ttf").toExternalForm(), 12);
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/madmax/MainMenu.fxml"));
             Parent root = loader.load();
 

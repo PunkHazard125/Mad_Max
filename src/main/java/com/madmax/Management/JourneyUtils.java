@@ -109,7 +109,14 @@ public class JourneyUtils {
 
             warRig.consumeFuel(fuelCost);
             warRig.setLocationId(newLoc);
-            warRig.refuel(outposts.get(newLoc).getFuelSupply());
+
+            int fuelSpace = warRig.getFuelCapacity() - warRig.getFuel();
+            int supply = outposts.get(newLoc).getFuelSupply();
+            int fuelTaken = Math.min(fuelSpace, supply);
+
+            warRig.refuel(supply);
+
+            outposts.get(newLoc).setFuelSupply(supply - fuelTaken);
 
         }
 
@@ -163,7 +170,14 @@ public class JourneyUtils {
 
                 trialRig.consumeFuel(cost);
                 trialRig.setLocationId(copiedPath.get(i + 1).getId());
-                trialRig.refuel(copiedPath.get(i + 1).getFuelSupply());
+
+                int fuelSpace = trialRig.getFuelCapacity() - trialRig.getFuel();
+                int supply = copiedPath.get(i + 1).getFuelSupply();
+                int fuelTaken = Math.min(fuelSpace, supply);
+
+                trialRig.refuel(supply);
+
+                copiedPath.get(i + 1).setFuelSupply(supply - fuelTaken);
 
                 if (dest == copiedPath.get(i + 1).getId()) {
 

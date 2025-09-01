@@ -20,7 +20,7 @@ public class JourneyUtils {
         Arrays.fill(dist, Integer.MAX_VALUE);
         Arrays.fill(parent, -1);
 
-        PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[1]));
+        PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt((int[] a) -> a[1]));
 
         dist[src] = 0;
         pq.offer(new int[]{src, 0});

@@ -54,8 +54,8 @@ public class FinalMenuController {
         missionStatus.setText(id == 50 ? "Mission Status: Successful" : "Mission Status: Failed");
 
         animateCount(fuelConsumption, fuel, "Fuel Consumption: ", " Liter(s)");
-        animateCount(itemCount, item, "Item(s) Sold: ", "");
-        animateCount(totalProfit, profit, "Profit Made: ", " Credit(s)");
+        animateCount(itemCount, item, "Item Count: ", "");
+        animateCount(totalProfit, profit, "Cargo Value: ", " Credit(s)");
         animateCount(eventCount, event, "Event(s) Encountered: ", "");
 
         currLocation.setText("Location: " + currLoc);
